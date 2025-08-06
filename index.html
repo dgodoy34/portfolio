@@ -71,7 +71,6 @@
                         <div class="carousel" role="region" aria-label="Carrusel de imágenes de Radio Mix">
                             <img src="./img/Captura de pantalla 2025-08-05 220527.png" alt="Página de inicio de Radio Mix" class="w-full h-48 object-cover carousel-image active">
                             <img src="./img/Captura de pantalla 2025-08-06 090234.png" alt="chat de mensajes de Radio Mix" class="w-full h-48 object-cover carousel-image hidden">
-                            <!--img src="https://via.placeholder.com/400x200?text=Radio+Mix+-+Noticias" alt="Sección de noticias de Radio Mix" class="w-full h-48 object-cover carousel-image hidden"-->
                         </div>
                         <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
                         <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
@@ -108,7 +107,6 @@
                     <div class="relative">
                         <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 3">
                             <img src="./img/pb.png" alt="Proyecto 3 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
-                            
                         </div>
                         <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
                         <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
@@ -129,15 +127,16 @@
             <h2 id="contacto-titulo" class="text-3xl font-bold text-center mb-8">Contacto</h2>
             <div class="max-w-lg mx-auto">
                 <p class="text-lg text-center mb-6">¿Interesado en trabajar juntos? Envíame un mensaje.</p>
-                <div class="space-y-4">
+                <form id="contact-form" class="space-y-4">
                     <label for="nombre" class="sr-only">Nombre</label>
-                    <input id="nombre" type="text" placeholder="Nombre" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    <input id="nombre" type="text" name="nombre" placeholder="Nombre" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
                     <label for="email" class="sr-only">Correo electrónico</label>
-                    <input id="email" type="email" placeholder="Correo electrónico" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                    <input id="email" type="email" name="email" placeholder="Correo electrónico" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required>
                     <label for="mensaje" class="sr-only">Mensaje</label>
-                    <textarea id="mensaje" placeholder="Mensaje" rows="5" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"></textarea>
-                    <button class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition" aria-label="Enviar mensaje">Enviar</button>
-                </div>
+                    <textarea id="mensaje" name="mensaje" placeholder="Mensaje" rows="5" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600" required></textarea>
+                    <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-lg hover:bg-indigo-700 transition" aria-label="Enviar mensaje">Enviar</button>
+                </form>
+                <p id="form-message" class="text-center mt-4 hidden"></p>
             </div>
         </div>
     </section>
@@ -154,7 +153,12 @@
         </div>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
+        // Inicializa EmailJS con tu clave pública
+        emailjs.init("fksMZpFl9TQtslnTL"); // Reemplaza con tu clave pública de EmailJS
+
         // Smooth scrolling para los enlaces de navegación
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -189,10 +193,33 @@
                 showImage(currentIndex);
             });
         });
+
+        // Manejo del formulario de contacto
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formMessage = document.getElementById("form-message");
+            formMessage.classList.remove("text-green-600", "text-red-600");
+            formMessage.classList.add("hidden");
+
+            emailjs.sendForm("service_0u82zgm", "template_sb8evwy", this)
+                .then(function() {
+                    formMessage.textContent = "¡Mensaje enviado con éxito!";
+                    formMessage.classList.add("text-green-600");
+                    formMessage.classList.remove("hidden");
+                    document.getElementById("contact-form").reset();
+                }, function(error) {
+                    formMessage.textContent = "Error al enviar el mensaje. Por favor, intenta de nuevo.";
+                    formMessage.classList.add("text-red-600");
+                    formMessage.classList.remove("hidden");
+                });
+        });
+
+        // Protección contra clic derecho
         document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    alert('El código fuente está protegido. Contacta al desarrollador para más información.');
-});
+            e.preventDefault();
+            alert('El código fuente está protegido. Contacta al desarrollador para más información.');
+        });
     </script>
 </body>
 </html>
