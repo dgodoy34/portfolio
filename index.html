@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de [Tu Nombre], desarrollador web especializado en crear experiencias digitales únicas.">
+    <meta name="description" content="Portafolio de Diego, desarrollador web especializado en crear experiencias digitales únicas.">
     <meta name="author" content="Diego">
     <title>Mi Portafolio - Desarrollador Web</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,6 +13,49 @@
         /* Estilos personalizados para el carrusel */
         .carousel-image.hidden { display: none; }
         .carousel-image.active { display: block; }
+
+        /* Estilos para el botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-float img {
+            width: 40px;
+            height: 40px;
+        }
+        /* Estilo para el tooltip */
+        .whatsapp-float .tooltip {
+            visibility: hidden;
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            font-size: 12px; /* Tamaño de letra más pequeño */
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .whatsapp-float:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="font-['Poppins'] bg-gray-100 text-gray-800">
@@ -169,6 +212,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+5491120226907" target="_blank" class="whatsapp-float" aria-label="Contacta con nosotros por WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="tooltip">¡Chatea conmigo!</span>
+    </a>
 
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
