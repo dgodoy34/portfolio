@@ -13,7 +13,6 @@
         /* Estilos personalizados para el carrusel */
         .carousel-image.hidden { display: none; }
         .carousel-image.active { display: block; }
-
         /* Estilos para el botón flotante de WhatsApp */
         .whatsapp-float {
             position: fixed;
@@ -45,7 +44,7 @@
             right: 0;
             background-color: #333;
             color: #fff;
-            font-size: 12px; /* Tamaño de letra más pequeño */
+            font-size: 12px;
             padding: 5px 10px;
             border-radius: 5px;
             white-space: nowrap;
@@ -55,6 +54,109 @@
         .whatsapp-float:hover .tooltip {
             visibility: visible;
             opacity: 1;
+        }
+        /* Estilos para los modales */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4b5563;
+            z-index: 10;
+        }
+        .modal-body {
+            padding: 2rem;
+        }
+        .modal-carousel {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        .modal-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .modal-carousel img.active {
+            display: block;
+        }
+        .modal-carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            transform: translateY(-50%);
+        }
+        .modal-carousel-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .modal-dots {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+        .modal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #d1d5db;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .modal-dot.active {
+            background-color: #4f46e5;
+        }
+        /* Deshabilitar scroll cuando el modal está abierto */
+        body.modal-open {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -77,7 +179,6 @@
             </div>
         </nav>
     </header>
-
     <!-- Sección Inicio -->
     <section id="inicio" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white" aria-labelledby="inicio-titulo">
         <div class="text-center max-w-3xl mx-auto px-4">
@@ -86,7 +187,6 @@
             <a href="#proyectos" class="inline-block bg-white text-indigo-600 font-semibold py-2 px-6 rounded-full hover:bg-gray-200 transition" aria-label="Ver mis proyectos">Ver Proyectos</a>
         </div>
     </section>
-
     <!-- Sección Sobre Mí -->
     <section id="sobre-mi" class="py-20 bg-white" aria-labelledby="sobre-mi-titulo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,32 +202,30 @@
             </div>
         </div>
     </section>
-
     <!-- Sección Proyectos -->
     <section id="proyectos" class="py-20 bg-gray-100" aria-labelledby="proyectos-titulo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="proyectos-titulo" class="text-3xl font-bold text-center mb-8">Mis Proyectos</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Proyecto 1: Radio Mix -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal1')">
                     <div class="relative">
                         <div class="carousel" role="region" aria-label="Carrusel de imágenes de Radio Mix">
                             <img src="./img/Captura de pantalla 2025-08-05 220527.png" alt="Página de inicio de Radio Mix" class="w-full h-48 object-cover carousel-image active">
                             <img src="./img/Captura de pantalla 2025-08-06 090234.png" alt="Chat de mensajes de Radio Mix" class="w-full h-48 object-cover carousel-image hidden">
                         </div>
-                        <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
-                        <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Radio Mix BASICA</h3>
                         <p class="text-gray-600 mb-4">Plataforma de radio online con música 24/7 y programas en vivo.<br>
-            <span class="text-sm">Incluye un diseño responsivo y un chat para interacción con los oyentes.</span><br>
-            <span class="text-sm">Desarrollada con <strong>HTML</strong>, <strong>JavaScript</strong> y <strong>Tailwind CSS</strong> para una experiencia fluida.</span></p>
-                        <a href="https://radioclubmix1.infy.uk/?i=2" class="text-indigo-600 font-semibold hover:underline" aria-label="Ver proyecto Radio Mix">Ver Proyecto</a>
+                            <span class="text-sm">Incluye un diseño responsivo y un chat para interacción con los oyentes.</span><br>
+                            <span class="text-sm">Desarrollada con <strong>HTML</strong>, <strong>JavaScript</strong> y <strong>Tailwind CSS</strong> para una experiencia fluida.</span>
+                        </p>
+                        <span class="text-indigo-600 font-semibold">Ver Detalles</span>
                     </div>
                 </article>
                 <!-- Proyecto 2 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal2')">
                     <div class="relative">
                         <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 2">
                             <img src="./img/Captura de pantalla 2025-08-06 182953.png" alt="Proyecto 2 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
@@ -138,66 +236,83 @@
                             <img src="./img/5.png" alt="Proyecto 2 - Imagen 6" class="w-full h-48 object-cover carousel-image hidden">
                             <img src="./img/6.png" alt="Proyecto 2 - Imagen 7" class="w-full h-48 object-cover carousel-image hidden">
                         </div>
-                        <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
-                        <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">RADIO-MIX V2</h3>
                         <p class="text-gray-600 mb-4"> Plataforma avanzada de radio online con streaming de música 24/7.<br>
-            <span class="text-sm">Incluye programas en vivo, panel de noticias, panel de admin y una app para Android.</span><br>
-            <span class="text-sm">Desarrollada con <strong>HTML</strong>, <strong>JavaScript</strong> y <strong>Tailwind CSS</strong> para un diseño responsivo y funcional.</span></p>
-                        <a href="https://radio-mix.vercel.app/" class="text-indigo-600 font-semibold hover:underline" aria-label="Ver proyecto 2">Ver Proyecto</a>
+                            <span class="text-sm">Incluye programas en vivo, panel de noticias, panel de admin y una app para Android.</span><br>
+                            <span class="text-sm">Desarrollada con <strong>HTML</strong>, <strong>JavaScript</strong> y <strong>Tailwind CSS</strong> para un diseño responsivo y funcional.</span>
+                        </p>
+                        <span class="text-indigo-600 font-semibold">Ver Detalles</span>
                     </div>
                 </article>
                 <!-- Proyecto 3 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal3')">
                     <div class="relative">
                         <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 3">
                             <img src="./img/pb.png" alt="Proyecto 3 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
                         </div>
-                        <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
-                        <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Pagina Basica</h3>
                         <p class="text-gray-600 mb-4">Página básica realizada en HTML5, CSS, JS con un formulario básico y contacto por WhatsApp.</p>
-                        <a href="https://pagina-basica-nu.vercel.app/" class="text-indigo-600 font-semibold hover:underline" aria-label="Ver proyecto 3">Ver Proyecto</a>
+                        <span class="text-indigo-600 font-semibold">Ver Detalles</span>
                     </div>
                 </article>
                 <!-- Proyecto 4 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal4')">
                     <div class="relative">
                         <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 4">
                             <img src="./img/1a.png" alt="Proyecto 4 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
                             <img src="./img/1b.png" alt="Proyecto 4 - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
                             <img src="./img/1c.png" alt="Proyecto 4 - Imagen 3" class="w-full h-48 object-cover carousel-image hidden">
                         </div>
-                        <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
-                        <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Página Básica de Catálogo</h3>
                         <p class="text-gray-600 mb-4">Una solución web para negocios que buscan mostrar sus productos de manera práctica.<br>
-    Incluye un catálogo interactivo, carrito de compras y mensajería directa por WhatsApp para una comunicación rápida con los clientes.<br>
-    Desarrollada con <strong>HTML5</strong>, <strong>CSS</strong> y <strong>JavaScript</strong>, con un diseño responsivo y centrado en la experiencia del usuario.</p>
-                        <a href="https://dgodoy34.github.io/importacion/" class="text-indigo-600 font-semibold hover:underline" aria-label="Ver proyecto 4">Ver Proyecto</a>
+                            Incluye un catálogo interactivo, carrito de compras y mensajería directa por WhatsApp para una comunicación rápida con los clientes.<br>
+                            Desarrollada con <strong>HTML5</strong>, <strong>CSS</strong> y <strong>JavaScript</strong>, con un diseño responsivo y centrado en la experiencia del usuario.
+                        </p>
+                        <span class="text-indigo-600 font-semibold">Ver Detalles</span>
                     </div>
                 </article>
-                  <!-- Proyecto 4 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- Proyecto 5 -->
+                <article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal5')">
                     <div class="relative">
-                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 4">
-                            <img src="./img/2a.png" alt="Proyecto 4 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
-                            <img src="./img/2c.png" alt="Proyecto 4 - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
-                            
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 5">
+                            <img src="./img/2a.png" alt="Proyecto 5 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                            <img src="./img/2c.png" alt="Proyecto 5 - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
                         </div>
-                        <button class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-prev" aria-label="Imagen anterior">❮</button>
-                        <button class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full carousel-next" aria-label="Imagen siguiente">❯</button>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Página Básica Profesional</h3>
                         <p class="text-gray-600 mb-4">"Página de aterrizaje para conversión de clientes, construida con tecnologías modernas (Tailwind CSS para estilos, JS para interacciones). Combina elementos persuasivos (hero section, testimonios) con funcionalidades prácticas (formulario validado), ideal para negocios locales o freelancers."</p>
-                        <a href="https://prueba-deepseek.vercel.app/" class="text-indigo-600 font-semibold hover:underline" aria-label="Ver proyecto 4">Ver Proyecto</a>
+                        <span class="text-indigo-600 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+                <!-- ✅ Proyecto 6: NUEVO y dentro del grid -->
+                <article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal6')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto 6">
+                            <img src="./img/7.png" alt="Proyecto 6 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                            <!-- Agrega más imágenes si lo deseas -->
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">MDTSublimados</h3>
+                        <p class="text-gray-600 mb-4">MDT Sublimados – Sitio Web Comercial
+Desarrollo full-stack de e-commerce para emprendimiento local
+
+Diseñé y desarrollé desde cero la plataforma web de MDT Sublimados, un emprendimiento de sublimación y productos personalizados ubicado en Tristán Suárez, Buenos Aires. El sitio combina una experiencia de usuario intuitiva con funcionalidades comerciales robustas, pensado especialmente para emprendedores que necesitan una solución ágil y efectiva para gestionar pedidos y mostrar sus productos.
+
+Tecnologías utilizadas:
+
+Frontend: HTML5, CSS3, JavaScript (responsive y mobile-first)
+Backend & Base de datos: Firebase (Firestore, Authentication, Cloud Storage)
+Integraciones: WhatsApp para finalización de pedidos, Google Analytics, Google Maps
+Herramientas: CSV para importación masiva de productos, panel de administración con autenticación segura</p>
+                        <span class="text-indigo-600 font-semibold">Ver Detalles</span>
                     </div>
                 </article>
             </div>
@@ -223,31 +338,378 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6" aria-label="Pie de página">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p>&copy; 2025 Diego. Todos los derechos reservados.</p>
             <div class="mt-4 flex justify-center space-x-4">
-                <a href="#" class="text-gray-400 hover:text-white" aria-label="Perfil de LinkedIn">LinkedIn</a>
-                <a href="#" class="text-gray-400 hover:text-white" aria-label="Perfil de GitHub">GitHub</a>
-                <a href="#" class="text-gray-400 hover:text-white" aria-label="Perfil de Twitter">Twitter</a>
+                <a href="https://www.linkedin.com/in/dgodoy34/" class="text-gray-400 hover:text-white" aria-label="Perfil de LinkedIn">LinkedIn</a>
+                <a href="https://github.com/dgodoy34" class="text-gray-400 hover:text-white" aria-label="Perfil de GitHub">GitHub</a>
+                <a href="https://twitter.com/dgodoy34" class="text-gray-400 hover:text-white" aria-label="Perfil de Twitter">Twitter</a>
+                <a href="https://www.instagram.com/diegodg34/" class="text-gray-400 hover:text-white" aria-label="Perfil de Instagram">Instagram</a>
             </div>
         </div>
     </footer>
-
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/+5491120226907" target="_blank" class="whatsapp-float" aria-label="Contacta con nosotros por WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
         <span class="tooltip">¡Chatea conmigo!</span>
     </a>
+    <!-- Modales de Proyectos -->
+    <!-- Modal Proyecto 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal1')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/Captura de pantalla 2025-08-05 220527.png" alt="Página de inicio de Radio Mix" class="active">
+                        <img src="./img/Captura de pantalla 2025-08-06 090234.png" alt="Chat de mensajes de Radio Mix">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">Radio Mix BASICA</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Descripción</h4>
+                        <p class="text-gray-600">Plataforma de radio online con música 24/7 y programas en vivo. Incluye un diseño responsivo y un chat para interacción con los oyentes. Desarrollada con HTML, JavaScript y Tailwind CSS para una experiencia fluida.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>JavaScript</li>
+                            <li>Tailwind CSS</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://radioclubmix1.infy.uk/?i=2" target="_blank" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Proyecto 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal2')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/Captura de pantalla 2025-08-06 182953.png" alt="RADIO-MIX V2 - Imagen 1" class="active">
+                        <img src="./img/Captura de pantalla 2025-08-06 183015.png" alt="RADIO-MIX V2 - Imagen 2">
+                        <img src="./img/Captura de pantalla 2025 2.png" alt="RADIO-MIX V2 - Imagen 3">
+                        <img src="./img/Captura de pantalla 2025-3.png" alt="RADIO-MIX V2 - Imagen 4">
+                        <img src="./img/4.png" alt="RADIO-MIX V2 - Imagen 5">
+                        <img src="./img/5.png" alt="RADIO-MIX V2 - Imagen 6">
+                        <img src="./img/6.png" alt="RADIO-MIX V2 - Imagen 7">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 2)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 3)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 4)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 5)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 6)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">RADIO-MIX V2</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Descripción</h4>
+                        <p class="text-gray-600">Plataforma avanzada de radio online con streaming de música 24/7. Incluye programas en vivo, panel de noticias, panel de administración y una aplicación para Android. Desarrollada con HTML, JavaScript y Tailwind CSS para un diseño responsivo y funcional.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>JavaScript</li>
+                            <li>Tailwind CSS</li>
+                            <li>Responsive Design</li>
+                            <li>Android App</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://radio-mix.vercel.app/" target="_blank" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Proyecto 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal3')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/pb.png" alt="Página Básica - Imagen 1" class="active">
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">Página Básica</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Descripción</h4>
+                        <p class="text-gray-600">Página básica realizada en HTML5, CSS y JavaScript con un formulario básico y contacto directo por WhatsApp. Ideal para negocios pequeños que necesitan una presencia en línea simple pero efectiva.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>WhatsApp API</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://pagina-basica-nu.vercel.app/" target="_blank" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Proyecto 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal4')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/1a.png" alt="Página de Catálogo - Imagen 1" class="active">
+                        <img src="./img/1b.png" alt="Página de Catálogo - Imagen 2">
+                        <img src="./img/1c.png" alt="Página de Catálogo - Imagen 3">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 2)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">Página Básica de Catálogo</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Descripción</h4>
+                        <p class="text-gray-600">Una solución web para negocios que buscan mostrar sus productos de manera práctica. Incluye un catálogo interactivo, carrito de compras y mensajería directa por WhatsApp para una comunicación rápida con los clientes.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>WhatsApp API</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://dgodoy34.github.io/importacion/" target="_blank" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Proyecto 5 -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal5')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/2a.png" alt="Página Profesional - Imagen 1" class="active">
+                        <img src="./img/2c.png" alt="Página Profesional - Imagen 2">
+                        <img src="./img/2b.png" alt="Página Profesional - Imagen 3">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">Página Básica Profesional</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Descripción</h4>
+                        <p class="text-gray-600">Página de aterrizaje profesional diseñada para conversión de clientes. Combina elementos persuasivos (hero section, testimonios) con funcionalidades prácticas (formulario validado). Ideal para negocios locales o freelancers que buscan una presencia en línea profesional.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>Tailwind CSS</li>
+                            <li>JavaScript</li>
+                            <li>Form Validation</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://prueba-deepseek.vercel.app/" target="_blank" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Proyecto 6 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal6')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/7.png" alt="Proyecto 6 - Imagen 1" class="active">
+                        <!-- Agrega más imágenes si lo deseas -->
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4">Mi Nuevo Proyecto</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Descripción</h4>
+                        <p class="text-gray-600">MDT Sublimados – Sitio Web Comercial
+Desarrollo full-stack de e-commerce para emprendimiento local
 
+Diseñé y desarrollé desde cero la plataforma web de MDT Sublimados, un emprendimiento de sublimación y productos personalizados ubicado en Tristán Suárez, Buenos Aires. El sitio combina una experiencia de usuario intuitiva con funcionalidades comerciales robustas, pensado especialmente para emprendedores que necesitan una solución ágil y efectiva para gestionar pedidos y mostrar sus productos.
+
+Tecnologías utilizadas:
+
+Frontend: HTML5, CSS3, JavaScript (responsive y mobile-first)
+Backend & Base de datos: Firebase (Firestore, Authentication, Cloud Storage)
+Integraciones: WhatsApp para finalización de pedidos, Google Analytics, Google Maps
+Herramientas: CSV para importación masiva de productos, panel de administración con autenticación segura
+Funcionalidades clave:
+✔ Catálogo dinámico con productos destacados
+✔ Sistema de gestión de productos (CRUD completo + importación por CSV)
+✔ Formulario de contacto con validación
+✔ Footer interactivo con mapa y redes sociales
+✔ Carrito de compras orientado a conversión por WhatsApp
+✔ Diseño 100% responsive y optimizado para móviles
+
+El proyecto refleja mi enfoque en soluciones prácticas, escalables y centradas en el usuario, priorizando la usabilidad para clientes no técnicos y la eficiencia operativa para el administrador.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>Tailwind CSS</li>
+                            <li>JavaScript</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <!-- Reemplaza con tu enlace real -->
+                    <a href="https://www.mdtsublimados.com.ar/?i=1" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition inline-block">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Inicializa EmailJS con tu clave pública
-        emailjs.init("fksMZpFl9TQtslnTL"); // Reemplaza con tu clave pública de EmailJS
-
+        emailjs.init("fksMZpFl9TQtslnTL");
+        // Funciones para manejar los modales
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+            initModalCarousel(modal);
+        }
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+        // Cerrar modal al hacer clic fuera del contenido
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target.id);
+            }
+        });
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+        // Funciones para el carrusel del modal
+        function initModalCarousel(modal) {
+            const carousel = modal.querySelector('.carousel-inner');
+            const images = carousel.querySelectorAll('img');
+            const dots = modal.querySelectorAll('.modal-dot');
+            let currentIndex = 0;
+            function showSlide(index) {
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                currentIndex = index;
+            }
+            // Event listeners para los botones de navegación
+            modal.querySelectorAll('.modal-carousel-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            // Event listeners para los dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    showSlide(index);
+                });
+            });
+        }
+        function prevSlide(btn) {
+            const modal = btn.closest('.modal');
+            const carousel = modal.querySelector('.carousel-inner');
+            const images = carousel.querySelectorAll('img');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showSlideInModal(modal, currentIndex);
+        }
+        function nextSlide(btn) {
+            const modal = btn.closest('.modal');
+            const carousel = modal.querySelector('.carousel-inner');
+            const images = carousel.querySelectorAll('img');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            currentIndex = (currentIndex + 1) % images.length;
+            showSlideInModal(modal, currentIndex);
+        }
+        function goToSlide(dot, index) {
+            const modal = dot.closest('.modal');
+            showSlideInModal(modal, index);
+        }
+        function showSlideInModal(modal, index) {
+            const carousel = modal.querySelector('.carousel-inner');
+            const images = carousel.querySelectorAll('img');
+            const dots = modal.querySelectorAll('.modal-dot');
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
         // Smooth scrolling para los enlaces de navegación
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -257,53 +719,63 @@
                 });
             });
         });
-
-        // Carrusel para imágenes de proyectos
+        // Carrusel para imágenes de proyectos (tarjetas principales)
         document.querySelectorAll('.carousel').forEach(carousel => {
             const images = carousel.querySelectorAll('.carousel-image');
-            const prevButton = carousel.parentElement.querySelector('.carousel-prev');
-            const nextButton = carousel.parentElement.querySelector('.carousel-next');
             let currentIndex = 0;
-
             function showImage(index) {
                 images.forEach((img, i) => {
                     img.classList.toggle('hidden', i !== index);
                     img.classList.toggle('active', i === index);
                 });
             }
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            });
-
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            });
-        });
-
-        // Manejo del formulario de contacto
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const formMessage = document.getElementById("form-message");
-            formMessage.classList.remove("text-green-600", "text-red-600");
-            formMessage.classList.add("hidden");
-
-            emailjs.sendForm("service_0u82zgm", "template_sb8evwy", this)
-                .then(function() {
-                    formMessage.textContent = "¡Mensaje enviado con éxito!";
-                    formMessage.classList.add("text-green-600");
-                    formMessage.classList.remove("hidden");
-                    document.getElementById("contact-form").reset();
-                }, function(error) {
-                    formMessage.textContent = "Error al enviar el mensaje. Por favor, intenta de nuevo.";
-                    formMessage.classList.add("text-red-600");
-                    formMessage.classList.remove("hidden");
+            // Si hay botones de navegación, mantener esta funcionalidad
+            const prevButton = carousel.parentElement.querySelector('.carousel-prev');
+            const nextButton = carousel.parentElement.querySelector('.carousel-next');
+            if (prevButton && nextButton) {
+                prevButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    showImage(currentIndex);
                 });
+                nextButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                });
+            }
+        });
+       // Manejo del formulario de contacto con Formspree (sin recarga)
+document.getElementById("contact-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const formMessage = document.getElementById("form-message");
+    formMessage.classList.remove("text-green-600", "text-red-600");
+    formMessage.classList.add("hidden");
+
+    const formData = new FormData(this);
+    try {
+        const response = await fetch("https://formcarry.com/s/r4kI5AhCMyK", {
+            method: "POST",
+            body: formData,
+            headers: {
+                "Accept": "application/json"
+            }
         });
 
+        if (response.ok) {
+            formMessage.textContent = "¡Mensaje enviado con éxito!";
+            formMessage.classList.add("text-green-600");
+            formMessage.classList.remove("hidden");
+            this.reset();
+        } else {
+            throw new Error("Error en la respuesta del servidor");
+        }
+    } catch (error) {
+        formMessage.textContent = "Error al enviar el mensaje. Por favor, intenta de nuevo.";
+        formMessage.classList.add("text-red-600");
+        formMessage.classList.remove("hidden");
+    }
+});
         // Protección contra clic derecho
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
