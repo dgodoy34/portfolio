@@ -65,7 +65,7 @@ Herramientas: Git, GitHub, Android Studio, VS Code, Figma
 📬 Contacto
 ¿Trabajamos juntos?
 
-🌐 Portfolio: https://portfolio-zeta-two-c4omugg8pt.vercel.app/
+🌐 Portfolio: https://dgodoy34.github.io/portfolio/
 💼 LinkedIn: https://www.linkedin.com/in/dgodoy34/
 ✉️ Email: dgodoy34@gmail.com
 📱 WhatsApp: [+54 9 1120226907]
