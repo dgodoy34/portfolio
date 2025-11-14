@@ -1,0 +1,183 @@
+/* Estilos personalizados para el carrusel */
+.carousel-image.hidden { display: none; }
+.carousel-image.active { display: block; }
+
+/* Estilos para el botón flotante de WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+.whatsapp-float img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Estilo para el tooltip */
+.whatsapp-float .tooltip {
+    visibility: hidden;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.whatsapp-float:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilos para los modales */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background-color: white;
+    border-radius: 0.75rem; /* 12px */
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4b5563;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.modal-body {
+    padding: 2rem;
+}
+.modal-carousel {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 0.5rem; /* 8px */
+}
+.modal-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+.modal-carousel img.active {
+    display: block;
+}
+.modal-carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    transform: translateY(-50%);
+}
+.modal-carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.modal-carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.modal-dots {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+.modal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.modal-dot.active {
+    background-color: #1e40af; /* blue-800 */
+}
+.modal-dot:hover {
+    background-color: #9ca3af;
+}
+
+/* Deshabilitar scroll cuando el modal está abierto */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Scroll Indicator */
+#scrollIndicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, #1e40af, #3b82f6); /* blue-800 to blue-500 */
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
