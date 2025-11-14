@@ -503,3 +503,508 @@
     <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desarrollo sitios web profesionales y convertidores para emprendedores. Transformo ideas en soluciones digitales que venden.">
+    <meta name="author" content="Diego Godoy">
+    <title>Diego Godoy - Desarrollador Web para Emprendedores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico"> <!-- Asegúrate de tener este favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-['Poppins'] bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navegación principal">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-blue-900">Diego Godoy</h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#inicio" class="text-blue-900 hover:text-blue-600 transition font-medium">Inicio</a>
+                    <a href="#sobre-mi" class="text-blue-900 hover:text-blue-600 transition font-medium">Sobre Mí</a>
+                    <a href="#proyectos" class="text-blue-900 hover:text-blue-600 transition font-medium">Soluciones</a>
+                    <a href="#como-trabajo" class="text-blue-900 hover:text-blue-600 transition font-medium">Cómo Trabajo</a>
+                    <a href="#contacto" class="text-blue-900 hover:text-blue-600 transition font-medium">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 text-white px-4">
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">Desarrollo tu Sitio Web Profesional</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Transformo ideas en soluciones digitales que venden, generan leads y crecen tu negocio.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#proyectos" class="inline-block bg-white text-blue-900 font-semibold py-3 px-8 rounded-full hover:bg-gray-100 transition shadow-lg" aria-label="Ver mis soluciones">Ver Soluciones</a>
+                <a href="#contacto" class="inline-block bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition" aria-label="Contactarme">Hablar conmigo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="py-20 bg-white" aria-labelledby="sobre-mi-titulo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="sobre-mi-titulo" class="text-3xl font-bold text-center mb-8 text-blue-900">Sobre Mí</h2>
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3">
+                    <img src="./img/Captura de pantalla 2025-08-05 193102.png" alt="Foto de perfil de Diego Godoy" class="rounded-xl shadow-lg w-full max-w-xs mx-auto">
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg mb-4 font-['Lora']">Desarrollo sitios web profesionales, rápidos y convertidores para emprendedores como tú.</p>
+                    <p class="text-lg mb-4 font-['Lora']">No solo diseño, sino que construyo herramientas digitales que generan ventas, como el sitio de mi propio negocio, MDT Sublimados. Si tu negocio necesita una presencia en línea que convierta visitantes en clientes, estoy aquí para ayudarte.</p>
+                    <p class="text-lg font-['Lora']">Mi objetivo es transformar ideas en soluciones digitales que no solo sean visualmente atractivas, sino también intuitivas y efectivas para tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Soluciones (Anteriormente Proyectos) -->
+    <section id="proyectos" class="py-20 bg-gray-50" aria-labelledby="proyectos-titulo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="proyectos-titulo" class="text-3xl font-bold text-center mb-8 text-blue-900">Soluciones Digitales para tu Negocio</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Descubre cómo puedo aplicar mi experiencia para resolver los desafíos de tu negocio y aumentar tus conversiones.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proyecto 1: MDT Sublimados (Caso de Éxito) -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal1')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes de MDT Sublimados">
+                            <img src="./img/7.png" alt="Tienda online MDT Sublimados - Página de inicio" class="w-full h-48 object-cover carousel-image active">
+                            <img src="./img/8.png" alt="Tienda online MDT Sublimados - Carrito de compras" class="w-full h-48 object-cover carousel-image hidden">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">MDT Sublimados - Caso de Éxito</h3>
+                        <p class="text-gray-600 mb-4">Desarrollé y optimicé esta tienda online para mi propio negocio de sublimación. Incluye catálogo interactivo, carrito de compras y WhatsApp para cierres de ventas. Resultado: <strong>+40% de conversiones</strong> en 3 meses. Esta es la calidad que puedo entregar para tu negocio.</p>
+                        <span class="text-blue-700 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+                <!-- Proyecto 2: Página de Catálogo -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal2')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto Página de Catálogo">
+                            <img src="./img/1a.png" alt="Página de Catálogo - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                            <img src="./img/1b.png" alt="Página de Catálogo - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
+                            <img src="./img/1c.png" alt="Página de Catálogo - Imagen 3" class="w-full h-48 object-cover carousel-image hidden">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Tienda Online con Catálogo</h3>
+                        <p class="text-gray-600 mb-4">Aumenta tus ventas en un 30% con un catálogo de productos que se ve profesional en cualquier dispositivo. Incluye carrito de compras integrado y mensajería directa.</p>
+                        <span class="text-blue-700 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+                <!-- Proyecto 3: Página Profesional -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal3')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto Página Profesional">
+                            <img src="./img/2a.png" alt="Página Profesional - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                            <img src="./img/2c.png" alt="Página Profesional - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
+                            <img src="./img/2b.png" alt="Página Profesional - Imagen 3" class="w-full h-48 object-cover carousel-image hidden">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Página de Aterrizaje Profesional</h3>
+                        <p class="text-gray-600 mb-4">Convierte visitantes en clientes con una página de aterrizaje diseñada para generar leads y cerrar ventas, sin necesidad de llamadas.</p>
+                        <span class="text-blue-700 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+                <!-- Proyecto 4: Radio Mix -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal4')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto Radio Mix">
+                            <img src="./img/Captura de pantalla 2025-08-05 220527.png" alt="Radio Mix - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                            <img src="./img/Captura de pantalla 2025-08-06 090234.png" alt="Radio Mix - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Ejemplo: Interacción en Vivo</h3>
+                        <p class="text-gray-600 mb-4">Implemento funcionalidades como chat en vivo o formularios interactivos para aumentar la participación de tus usuarios.</p>
+                        <span class="text-blue-700 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+                <!-- Proyecto 5: Página Básica -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal5')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto Página Básica">
+                            <img src="./img/pb.png" alt="Página Básica - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Presencia Online Básica</h3>
+                        <p class="text-gray-600 mb-4">Ideal para negocios que necesitan una web simple, clara y funcional con información de contacto y WhatsApp.</p>
+                        <span class="text-blue-700 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+                <!-- Proyecto 6: RADIO-MIX V2 -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 cursor-pointer" onclick="openModal('modal6')">
+                    <div class="relative">
+                        <div class="carousel" role="region" aria-label="Carrusel de imágenes del Proyecto RADIO-MIX V2">
+                            <img src="./img/Captura de pantalla 2025-08-06 182953.png" alt="RADIO-MIX V2 - Imagen 1" class="w-full h-48 object-cover carousel-image active">
+                            <img src="./img/Captura de pantalla 2025-08-06 183015.png" alt="RADIO-MIX V2 - Imagen 2" class="w-full h-48 object-cover carousel-image hidden">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-blue-900">Ejemplo: Panel de Control</h3>
+                        <p class="text-gray-600 mb-4">Desarrollo backends y paneles de administración personalizados para gestionar tu contenido o negocio.</p>
+                        <span class="text-blue-700 font-semibold">Ver Detalles</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Cómo Trabajo -->
+    <section id="como-trabajo" class="py-20 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">¿Cómo Trabajo?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="text-blue-700 text-4xl font-bold mb-4">1</div>
+                    <h3 class="text-xl font-semibold mb-2">Entendimiento</h3>
+                    <p class="text-gray-600">Hablamos de tu negocio, tu público y tus objetivos.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="text-blue-700 text-4xl font-bold mb-4">2</div>
+                    <h3 class="text-xl font-semibold mb-2">Diseño</h3>
+                    <p class="text-gray-600">Te presento un mockup de tu sitio antes de desarrollarlo.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="text-blue-700 text-4xl font-bold mb-4">3</div>
+                    <h3 class="text-xl font-semibold mb-2">Desarrollo</h3>
+                    <p class="text-gray-600">Construyo tu sitio con código limpio y optimizado.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div class="text-blue-700 text-4xl font-bold mb-4">4</div>
+                    <h3 class="text-xl font-semibold mb-2">Entrega y Soporte</h3>
+                    <p class="text-gray-600">Te entrego el sitio, te enseño a usarlo y te ofrezco soporte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section id="testimonios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Lo que Dicen de Mi Trabajo</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-blue-50 p-8 rounded-xl shadow-inner border border-blue-100">
+                    <p class="text-lg italic text-center font-['Lora'] text-gray-700 mb-6">"Diego diseñó y desarrolló el sitio web de mi negocio de sublimación. Las ventas aumentaron un 40% en el primer mes. ¡Recomendado!"</p>
+                    <div class="flex items-center justify-center">
+                        <div class="flex flex-col items-center">
+                            <img src="./img/logo.png" alt="Logo de MDT Sublimados" class="w-16 h-16 rounded-full object-cover mb-2">
+                            <p class="font-semibold text-blue-900">MDT Sublimados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-20 bg-gray-50" aria-labelledby="contacto-titulo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="contacto-titulo" class="text-3xl font-bold text-center mb-8 text-blue-900">Contacto</h2>
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-md">
+                <p class="text-lg text-center mb-6 text-gray-700">¿Interesado en trabajar juntos? Envíame un mensaje.</p>
+                <form id="contact-form" class="space-y-4">
+                    <label for="nombre" class="block text-gray-700">Nombre</label>
+                    <input id="nombre" type="text" name="nombre" placeholder="Tu Nombre" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+
+                    <label for="email" class="block text-gray-700">Correo electrónico</label>
+                    <input id="email" type="email" name="email" placeholder="tuemail@ejemplo.com" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+
+                    <label for="mensaje" class="block text-gray-700">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto..." rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
+
+                    <button type="submit" class="w-full bg-blue-900 text-white font-semibold py-3 rounded-lg hover:bg-blue-800 transition shadow-md" aria-label="Enviar mensaje">Enviar Mensaje</button>
+                </form>
+                <p id="form-message" class="text-center mt-4 hidden"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-10" aria-label="Pie de página">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold">Diego Godoy</h3>
+                    <p class="mt-2 text-blue-200">Desarrollador Web para Emprendedores</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/dgodoy34/" class="text-blue-200 hover:text-white" aria-label="Perfil de LinkedIn">LinkedIn</a>
+                    <a href="https://github.com/dgodoy34" class="text-blue-200 hover:text-white" aria-label="Perfil de GitHub">GitHub</a>
+                    <a href="https://twitter.com/dgodoy34" class="text-blue-200 hover:text-white" aria-label="Perfil de Twitter">Twitter</a>
+                    <a href="https://www.instagram.com/diegodg34/" class="text-blue-200 hover:text-white" aria-label="Perfil de Instagram">Instagram</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-blue-800 text-center text-blue-300">
+                <p>&copy; 2025 Diego Godoy. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+5491120226907" target="_blank" class="whatsapp-float" aria-label="Habla con el desarrollador directamente">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="tooltip">Habla con el desarrollador directamente</span>
+    </a>
+
+    <!-- Modales de Proyectos -->
+    <!-- Modal MDT Sublimados -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal1')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/7.png" alt="Tienda online MDT Sublimados - Página de inicio" class="active">
+                        <img src="./img/8.png" alt="Tienda online MDT Sublimados - Carrito de compras">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4 text-blue-900">MDT Sublimados - Caso de Éxito</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Descripción</h4>
+                        <p class="text-gray-600">Desarrollé y optimicé esta tienda online para mi propio negocio de sublimación. Incluye catálogo interactivo, carrito de compras y WhatsApp para cierres de ventas. Resultado: <strong>+40% de conversiones</strong> en 3 meses. Esta es la calidad que puedo entregar para tu negocio.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>WhatsApp API</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://www.mdtsublimados.com.ar/" target="_blank" class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition inline-block shadow-md">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Página de Catálogo -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal2')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/1a.png" alt="Página de Catálogo - Imagen 1" class="active">
+                        <img src="./img/1b.png" alt="Página de Catálogo - Imagen 2">
+                        <img src="./img/1c.png" alt="Página de Catálogo - Imagen 3">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 2)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4 text-blue-900">Tienda Online con Catálogo</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Descripción</h4>
+                        <p class="text-gray-600">Aumenta tus ventas en un 30% con un catálogo de productos que se ve profesional en cualquier dispositivo. Incluye carrito de compras integrado y mensajería directa.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>WhatsApp API</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://dgodoy34.github.io/importacion/" target="_blank" class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition inline-block shadow-md">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Página Profesional -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal3')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/2a.png" alt="Página Profesional - Imagen 1" class="active">
+                        <img src="./img/2c.png" alt="Página Profesional - Imagen 2">
+                        <img src="./img/2b.png" alt="Página Profesional - Imagen 3">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 2)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4 text-blue-900">Página de Aterrizaje Profesional</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Descripción</h4>
+                        <p class="text-gray-600">Convierte visitantes en clientes con una página de aterrizaje diseñada para generar leads y cerrar ventas, sin necesidad de llamadas.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>Tailwind CSS</li>
+                            <li>JavaScript</li>
+                            <li>Form Validation</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://prueba-deepseek.vercel.app/" target="_blank" class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition inline-block shadow-md">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Radio Mix -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal4')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/Captura de pantalla 2025-08-05 220527.png" alt="Radio Mix - Imagen 1" class="active">
+                        <img src="./img/Captura de pantalla 2025-08-06 090234.png" alt="Radio Mix - Imagen 2">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4 text-blue-900">Ejemplo: Interacción en Vivo</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Descripción</h4>
+                        <p class="text-gray-600">Implemento funcionalidades como chat en vivo o formularios interactivos para aumentar la participación de tus usuarios.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML</li>
+                            <li>JavaScript</li>
+                            <li>Tailwind CSS</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://radioclubmix1.infy.uk/?i=2" target="_blank" class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition inline-block shadow-md">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Página Básica -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal5')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/pb.png" alt="Página Básica - Imagen 1" class="active">
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4 text-blue-900">Presencia Online Básica</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Descripción</h4>
+                        <p class="text-gray-600">Ideal para negocios que necesitan una web simple, clara y funcional con información de contacto y WhatsApp.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML5</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>WhatsApp API</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://pagina-basica-nu.vercel.app/" target="_blank" class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition inline-block shadow-md">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal RADIO-MIX V2 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal6')">×</button>
+            <div class="modal-body">
+                <div class="modal-carousel">
+                    <div class="carousel-inner">
+                        <img src="./img/Captura de pantalla 2025-08-06 182953.png" alt="RADIO-MIX V2 - Imagen 1" class="active">
+                        <img src="./img/Captura de pantalla 2025-08-06 183015.png" alt="RADIO-MIX V2 - Imagen 2">
+                    </div>
+                    <div class="modal-carousel-nav">
+                        <button class="modal-carousel-btn" onclick="prevSlide(this)">❮</button>
+                        <button class="modal-carousel-btn" onclick="nextSlide(this)">❯</button>
+                    </div>
+                    <div class="modal-dots">
+                        <span class="modal-dot active" onclick="goToSlide(this, 0)"></span>
+                        <span class="modal-dot" onclick="goToSlide(this, 1)"></span>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-4 text-blue-900">Ejemplo: Panel de Control</h3>
+                <div class="grid md:grid-cols-2 gap-6 mt-4">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Descripción</h4>
+                        <p class="text-gray-600">Desarrollo backends y paneles de administración personalizados para gestionar tu contenido o negocio.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-blue-800">Tecnologías</h4>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>HTML</li>
+                            <li>JavaScript</li>
+                            <li>Tailwind CSS</li>
+                            <li>Responsive Design</li>
+                            <li>Android App</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a href="https://radio-mix.vercel.app/" target="_blank" class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition inline-block shadow-md">Visitar Proyecto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
